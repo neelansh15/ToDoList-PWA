@@ -21,7 +21,8 @@ export default new Vuex.Store({
         title: 'Sail the Ocean',
         completed: false
       }
-    ]
+    ],
+    latestID: 3
   },
   getters:{
     todos(state){
@@ -43,7 +44,10 @@ export default new Vuex.Store({
       state.todos = obliviousToDos
     },
     addItem(state, payload){
-      payload.id = state.todos[state.todos.length - 1].id + 1
+      // payload.id = state.todos[state.todos.length - 1].id + 1
+      payload.id = state.latestID + 1
+      state.latestID++
+
       state.todos.push(payload)
       //Need to sort by id, but descending so that new items are at the top
       state.todos.sort(function(obj1, obj2){
