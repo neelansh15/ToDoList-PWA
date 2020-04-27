@@ -10,19 +10,13 @@
             To Do List
         </v-toolbar-title>
 
-        <v-spacer></v-spacer>
-
-        <v-btn icon>
-            <v-icon>mdi-plus</v-icon>
-        </v-btn>
-
       </v-app-bar>
 
       <v-content>
           <v-container>
               <h1>To Do List</h1>
 
-            <v-form @submit.prevent>
+            <v-form @submit.prevent="addItem">
                 <v-col cols="6">
                     <v-text-field label="New Item" v-model="newitem" single-line></v-text-field>
                 </v-col>
@@ -32,7 +26,7 @@
                     color="primary"
                     small
                     outlined
-                    @click="addItem"
+                    type="submit"
                 >Add</v-btn>
                 </v-col>
             </v-form>
@@ -52,6 +46,11 @@
 import ToDo from './ToDo'
 
 export default {
+    data(){
+        return{
+            newitem: ''
+        }
+    },
     components:{
         ToDo
     },
@@ -62,12 +61,18 @@ export default {
     },
     methods:{
         addItem(){
-            this.$store.dispatch('addItem', {
-                id: 0,
-                title: this.newitem,
-                completed: false
-            })
+            if(this.newitem != '' && this.newitem != null){
+                this.$store.dispatch('addItem', {
+                    id: 0,
+                    title: this.newitem,
+                    completed: false
+                })
+                this.newitem = ''
+            }
         }
+    },
+    mounted(){
+        this.$store.dispatch('init')
     }
 }
 </script>

@@ -53,14 +53,29 @@ export default new Vuex.Store({
       state.todos.sort(function(obj1, obj2){
         return obj2.id - obj1.id
       })
+    },
+    remove(state, id){
+      state.todos = state.todos.filter(item => item.id != id)
+    },
+    init(state){
+      //Need to sort by id, but descending so that new items are at the top
+      state.todos.sort(function(obj1, obj2){
+        return obj2.id - obj1.id
+      })
     }
   },
   actions: {
+    init(context){
+      context.commit('init')
+    },
     changeState(context, id){
       context.commit('changeState', id)
     },
     addItem(context, payload){
       context.commit('addItem', payload)
+    },
+    remove(context, id){
+      context.commit('remove', id)
     }
   },
   modules: {
