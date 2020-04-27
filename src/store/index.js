@@ -34,6 +34,12 @@ export default new Vuex.Store({
       let obliviousToDos = state.todos.filter(item => item.id != id)
       currentToDo[0].completed = !currentToDo[0].completed
       obliviousToDos.push(currentToDo[0])
+
+      //Need to sort by id
+      obliviousToDos.sort(function(obj1, obj2){
+        return obj1.id - obj2.id
+      })
+      
       state.todos = obliviousToDos
     }
   },
