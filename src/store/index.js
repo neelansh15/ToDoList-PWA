@@ -35,17 +35,28 @@ export default new Vuex.Store({
       currentToDo[0].completed = !currentToDo[0].completed
       obliviousToDos.push(currentToDo[0])
 
-      //Need to sort by id
+      //Need to sort by id, but descending so that new items are at the top
       obliviousToDos.sort(function(obj1, obj2){
-        return obj1.id - obj2.id
+        return obj2.id - obj1.id
       })
       
       state.todos = obliviousToDos
+    },
+    addItem(state, payload){
+      payload.id = state.todos[state.todos.length - 1].id + 1
+      state.todos.push(payload)
+      //Need to sort by id, but descending so that new items are at the top
+      state.todos.sort(function(obj1, obj2){
+        return obj2.id - obj1.id
+      })
     }
   },
   actions: {
     changeState(context, id){
       context.commit('changeState', id)
+    },
+    addItem(context, payload){
+      context.commit('addItem', payload)
     }
   },
   modules: {
