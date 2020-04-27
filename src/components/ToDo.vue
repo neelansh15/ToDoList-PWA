@@ -1,5 +1,5 @@
 <template>
-  <v-list-item>
+  <v-list-item @click="changeState">
           <v-list-item-icon>
               <v-icon v-if="completed">mdi-checkbox-marked</v-icon>
               <v-icon v-else>mdi-checkbox-blank-outline</v-icon>
@@ -16,8 +16,15 @@
 <script>
 export default {
     props:{
+        id: Number,
         title: String,
-        completed: Boolean
+        completed: Boolean,
+    },
+    methods:{
+        changeState(){
+            this.completed = !this.completed
+            
+        }
     }
 }
 </script>

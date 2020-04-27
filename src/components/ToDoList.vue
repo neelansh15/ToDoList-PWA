@@ -22,10 +22,9 @@
           <v-container>
               <h1>To Do List</h1>
 
-            
             <v-list>
                 <v-list-item-group>
-                    <ToDo v-for="todo in todos" :key="todo.id" :title="todo.title" :completed="todo.completed" />
+                    <ToDo v-for="todo in todos" :key="todo.id" :id="todo.id" :title="todo.title" :completed="todo.completed" />
                 </v-list-item-group>
             </v-list>
             
@@ -43,7 +42,7 @@ export default {
     },
     computed: {
         todos(){
-            return this.$store.state.todos
+            return this.$store.getters.todos
         }
     }
 }
