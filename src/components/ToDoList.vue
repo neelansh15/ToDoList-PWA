@@ -10,10 +10,14 @@
             To Do List
         </v-toolbar-title>
 
+        <v-spacer></v-spacer>
+
+        Neelansh Mathur
+
       </v-app-bar>
 
       <v-content>
-          <v-container>
+          <v-container class="mt-5">
               <h1>To Do List</h1>
 
             <v-form @submit.prevent="addItem">
