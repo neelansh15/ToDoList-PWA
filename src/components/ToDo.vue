@@ -23,7 +23,7 @@ export default {
     methods:{
         changeState(){
             this.completed = !this.completed
-            
+            this.$store.dispatch('changeState', this.id)
         }
     }
 }

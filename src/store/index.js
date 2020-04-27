@@ -30,8 +30,11 @@ export default new Vuex.Store({
   },
   mutations: {
     changeState(state, id){
-      alert("HEYYY")
-      state.todos = state.todos.filter(item => item.id == id)
+      let currentToDo = state.todos.filter(item => item.id == id)
+      let obliviousToDos = state.todos.filter(item => item.id != id)
+      currentToDo[0].completed = !currentToDo[0].completed
+      obliviousToDos.push(currentToDo[0])
+      state.todos = obliviousToDos
     }
   },
   actions: {
