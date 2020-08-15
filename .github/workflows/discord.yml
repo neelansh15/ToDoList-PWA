@@ -20,4 +20,4 @@ jobs:
           with:
             webhook: ${{secrets.DISCORD_WEBHOOK}}
             message: '**{{ github.context.payload.repository.name }}** has a new commit'
-            embed:  '{"title": "{{ commit.title }}", "description":"{{commit.description}}", "author":"{{commit.author.name}}"}'
+            embed:  '{"title": "{{ commit.title }}", "description":"{{commit.description}}", "author": { "name": "{{ commit.author.name }} ({{ commit.author.username }})"}}'
