@@ -20,4 +20,4 @@ jobs:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           uses: Ilshidur/action-discord@master
           with:
-            args: '{{ EVENT_PAYLOAD.repository.full_name }} has a commit by {{ EVENT_PAYLOAD.commit.author.name }} saying: {{ EVENT_PAYLOAD.commit.message }} }}'
+            args: '{{ EVENT_PAYLOAD.repository.full_name }} has a commit by {{ EVENT_PAYLOAD.sender.login }}'
