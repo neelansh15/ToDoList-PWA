@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Discord Message
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -20,4 +20,4 @@ jobs:
           with:
             webhook: ${{secrets.DISCORD_WEBHOOK}}
             message: '**{{ github.context.payload.repository.name }}** has a new commit'
-            embed:  '{"title": "{{ commit.title }}", "description":"{{commit.description}}", "author": { "name": "{{ commit.author.name }} ({{ commit.author.username }})"}}'
+            embed:  '[{{"title": "{{ commit.title }}", "color":1432397}, "description":"{{commit.description}}", "author": { "name": "{{ commit.author.name }} ({{ commit.author.username }})"}}]'
