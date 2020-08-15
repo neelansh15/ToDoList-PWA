@@ -16,8 +16,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Discord notification
-          env:
-            DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          uses: Ilshidur/action-discord@master
+          uses: Sniddl/discord-commits@v1.2
           with:
-            args: '**{{ EVENT_PAYLOAD.repository.full_name }}** has a commit by **{{ EVENT_PAYLOAD.sender.login }}**.\n => {{commit.title}}'
+            webhook: ${{secrets.DISCORD_WEBHOOK}}
+            message: '**{{ EVENT_PAYLOAD.repository.full_name }}** has a commit by **{{ commit.author.name }}**.\n => {{commit.title}}'
