@@ -19,4 +19,5 @@ jobs:
           uses: Sniddl/discord-commits@v1.2
           with:
             webhook: ${{secrets.DISCORD_WEBHOOK}}
-            message: '**{{ github.context.payload.repository.name }}** has a commit by **{{ commit.author.name }}**.\n => {{commit.title}}'
+            message: '**{{ github.context.payload.repository.name }}** has a new commit'
+            embed:  '{"title": "{{ commit.title }}", "description":"{{commit.description}}"}'
