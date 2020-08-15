@@ -1,4 +1,4 @@
-# ToDo Progressive Web App
+# ToDo: A Progressive Web App
 A Progresive Web App made in VueJS.  
 __Design Framework__: Vuetify  
 __State Management__: Vuex
